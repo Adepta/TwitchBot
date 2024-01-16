@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+
+
+
+
+
+    <ItemGroup>
+      <Folder Include="Connectors\DiscordAPI\" />
+      <Folder Include="Connectors\TwitchAPI\" />
+      <Folder Include="Connectors\TwitchEventBus\" />
+      <Folder Include="Connectors\Twitter\" />
+      <Folder Include="SettingsService\" />
+    </ItemGroup>
+
+</Project>
