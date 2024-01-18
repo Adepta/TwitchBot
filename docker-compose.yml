@@ -1,0 +1,6 @@
+﻿services:
+  mitsyii_chatbot:
+    image: mitsyii_chatbot
+    build:
+      context: .
+      dockerfile: Mitsyii_Chatbot/Dockerfile
