@@ -7,7 +7,7 @@ IMitsyiiChatbot ChatBot = new MitsyiiChatbot();
 
 try
 {
-    await ChatBot.Setup("steelmage");
+    await ChatBot.Setup("cohhcarnage");
    
     while (true)
     {

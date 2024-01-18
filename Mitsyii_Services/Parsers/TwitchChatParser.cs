@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Mitsyii_Services.Helpers;
 
 namespace Mitsyii_Services.Parsers;
 
@@ -11,11 +12,8 @@ public class TwitchChatParser : IChatParser
     /// </summary>
     /// <param name="chatMessage"></param>
     /// <returns></returns>
-    public async Task<ChatBotMessage> ParseChatMessage(string chatMessage)
+    public async Task<SChatBotMessage> ParseChatMessage(string chatMessage)
     {
-        // We need to Parse The Message From Chat. 
-
-        var message = new ChatBotMessage();
 
 
         // We Need to work out the differance between a message with an @ and a message without one.
@@ -27,9 +25,9 @@ public class TwitchChatParser : IChatParser
         {
             if (split[0].ToUpperInvariant() == "PING")
             {
-                return new ChatBotMessage()
+                return new SChatBotMessage()
                 {
-                    Command = "PONG",
+                    Command = ETwitchIRCCommands.PONG,
                     Message = split[1],
                     Channel = "Twitch",
                     User = "Twitch"
@@ -37,9 +35,9 @@ public class TwitchChatParser : IChatParser
             }
             else
             {
-                return new ChatBotMessage()
+                return new SChatBotMessage()
                 {
-                    Command = "Unknown",
+                    Command = ETwitchIRCCommands.UNKNOWN,
                     Message = chatMessage,
                     Channel = "Twitch",
                     User = "Twitch"
@@ -54,9 +52,9 @@ public class TwitchChatParser : IChatParser
             {
                 case "JOIN":
                 {
-                    return new ChatBotMessage()
+                    return new SChatBotMessage()
                     {
-                        Command = "JOIN",
+                        Command = ETwitchIRCCommands.JOIN,
                         Message = "Join Command Sent",
                         Channel = split[2],
                         User = username
@@ -66,9 +64,9 @@ public class TwitchChatParser : IChatParser
 
                 case "PRIVMSG":
                 {
-                    return new ChatBotMessage()
+                    return new SChatBotMessage()
                     {
-                        Command = "PRIVMSG",
+                        Command = ETwitchIRCCommands.PRIVMSG,
                         Message = split[3],
                         Channel = split[2],
                         User = username
@@ -78,9 +76,9 @@ public class TwitchChatParser : IChatParser
 
                 default:
                     Console.WriteLine($"Unable to Parse Message - {chatMessage}");
-                    return new ChatBotMessage()
+                    return new SChatBotMessage()
                     {
-                        Command = "Unknown",
+                        Command = ETwitchIRCCommands.UNKNOWN,
                         Message = chatMessage,
                         Channel = "Twitch",
                         User = "Twitch"
@@ -90,21 +88,5 @@ public class TwitchChatParser : IChatParser
 
             ;
         }
-    }
-}
-
-public record struct ChatBotMessage
-{
-    public string Command;
-    public string Message;
-    public string User;
-    public string Channel;
-
-    public ChatBotMessage()
-    {
-        Command = string.Empty;
-        Message = string.Empty;
-        User = string.Empty;
-        Channel = string.Empty;
     }
 }

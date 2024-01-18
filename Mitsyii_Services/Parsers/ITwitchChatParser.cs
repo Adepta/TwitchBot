@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Mitsyii_Services.Helpers;
 
 namespace Mitsyii_Services.Parsers;
 
@@ -6,6 +7,6 @@ namespace Mitsyii_Services.Parsers;
 
 public interface IChatParser
 {
-    public Task<ChatBotMessage> ParseChatMessage(string chatMessage);
+    public Task<SChatBotMessage> ParseChatMessage(string chatMessage);
     
 }

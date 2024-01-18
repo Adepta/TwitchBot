@@ -1,0 +1,23 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  mitsyii_chatbot:
+    build:
+      context: "C:\\Users\\lkyle\\RiderProjects\\Mitsyii"
+      dockerfile: "Mitsyii_Chatbot/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net7.0/Mitsyii_Chatbot.dll"
+    environment:
+      DOTNET_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      NUGET_PACKAGES: "C:\\Users\\lkyle\\.nuget\\packages"
+      NUGET_FALLBACK_PACKAGES: "C:\\Users\\lkyle\\.nuget\\packages"
+    image: "mitsyii_chatbot:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\lkyle\\.nuget\\packages:/root/.nuget/fallbackpackages"
+    - "C:\\Users\\lkyle\\RiderProjects\\Mitsyii\\Mitsyii_Chatbot:/app:rw"
+    - "C:\\Users\\lkyle\\RiderProjects\\Mitsyii:/src:rw"
+    working_dir: "/app"
